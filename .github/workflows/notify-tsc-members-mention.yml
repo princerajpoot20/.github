@@ -95,19 +95,19 @@ jobs:
       #########
       # Handling Slack notifications
       #########
-      - name: Convert markdown to slack markdown
-        # This workflow is from our own org repo and safe to reference by 'master'.
-        uses: asyncapi/.github/.github/actions/slackify-markdown@master # //NOSONAR
-        id: prmarkdown
-        with:
-          markdown: "[${{github.event.pull_request.title}}](${{github.event.pull_request.html_url}}) \n ${{github.event.pull_request.body}}"
-      - name: Send info about pull request
-        uses: rtCamp/action-slack-notify@c33737706dea87cd7784c687dadc9adf1be59990 # Using v2.3.2
-        env:
-          SLACK_WEBHOOK: ${{secrets.SLACK_TSC_MEMBERS_NOTIFY}}
-          SLACK_TITLE: 🆘 New PR that requires TSC Members attention 🆘
-          SLACK_MESSAGE: ${{steps.prmarkdown.outputs.text}}
-          MSG_MINIMAL: true
+      # - name: Convert markdown to slack markdown
+      #   # This workflow is from our own org repo and safe to reference by 'master'.
+      #   uses: asyncapi/.github/.github/actions/slackify-markdown@master # //NOSONAR
+      #   id: prmarkdown
+      #   with:
+      #     markdown: "[${{github.event.pull_request.title}}](${{github.event.pull_request.html_url}}) \n ${{github.event.pull_request.body}}"
+      # - name: Send info about pull request
+      #   uses: rtCamp/action-slack-notify@c33737706dea87cd7784c687dadc9adf1be59990 # Using v2.3.2
+      #   env:
+      #     SLACK_WEBHOOK: ${{secrets.SLACK_TSC_MEMBERS_NOTIFY}}
+      #     SLACK_TITLE: 🆘 New PR that requires TSC Members attention 🆘
+      #     SLACK_MESSAGE: ${{steps.prmarkdown.outputs.text}}
+      #     MSG_MINIMAL: true
       #########
       # Handling Kit.com notifications
       #########
